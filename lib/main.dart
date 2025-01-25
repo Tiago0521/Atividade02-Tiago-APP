@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Remove a faixa de debug
       theme: ThemeData(
-        primarySwatch: Colors.blue, // Define uma cor padrão
+        primarySwatch: Colors.blue, // Cor padrão do tema
       ),
       home: const ResponsiveLayout(),
     );
@@ -25,7 +25,10 @@ class ResponsiveLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Layout Responsivo')),
+      appBar: AppBar(
+        title: const Text('Layout Responsivo'),
+        backgroundColor: Colors.teal, // Cor de fundo da AppBar
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           // Adapta o layout com base na largura disponível
@@ -41,35 +44,56 @@ class ResponsiveLayout extends StatelessWidget {
 
   // Layout para dispositivos móveis
   Widget _buildMobileLayout() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.phone_android, size: 50, color: Colors.blue),
-          SizedBox(height: 10), // Espaço entre os widgets
-          Text(
-            'Visualização para Mobile',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-        ],
+    return Container(
+      color: Colors.teal.shade50, // Cor de fundo para mobile
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.phone_android, size: 70, color: Colors.teal), // Ícone colorido
+            SizedBox(height: 20), // Espaço entre os widgets
+            Text(
+              'Visualização para Mobile',
+              style: TextStyle(
+                fontSize: 24, 
+                fontWeight: FontWeight.bold,
+                color: Colors.teal, // Cor do texto
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   // Layout para dispositivos desktop
   Widget _buildDesktopLayout() {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.desktop_windows, size: 50, color: Colors.blue),
-          SizedBox(width: 10), // Espaço entre os widgets
-          Text(
-            'Visualização para Desktop',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-        ],
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.purple, Colors.blueAccent], // Gradiente de fundo
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.desktop_windows, size: 70, color: Colors.white), // Ícone colorido
+            SizedBox(width: 20), // Espaço entre os widgets
+            Text(
+              'Visualização para Desktop',
+              style: TextStyle(
+                fontSize: 24, 
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // Cor do texto
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
